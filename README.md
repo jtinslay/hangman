@@ -30,6 +30,6 @@ else:
     print("Oops! That is not a valid input.")
 ```
 
-- Output when an invalid letter is input, and then when the program is run again with a valid alpthabetical letter as input
+- Output when an invalid letter is input, and then when the program is run again with a valid alphabetical letter as input
 
 ![Milestone 2 command line output](milestone_2_command_line_output.png)
