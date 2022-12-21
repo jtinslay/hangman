@@ -8,7 +8,7 @@ class Hangman:
 
         self.word_guessed = ["_" for character in self.word]
 
-        self.num_letters = len(set(word_list))
+        self.num_letters = len(set(self.word))
         self.list_of_guesses = []
 
 
