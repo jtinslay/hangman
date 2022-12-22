@@ -10,7 +10,7 @@ This is a Python implementation of the Hangman game, where the computer thinks o
 
 ## Milestone 2
 - A list of 5 possible fruits is defined and one is selected at random through the use of the random module as the word for the user to guess.
-- The user is then asked to enter a character. The user input is validated to check if it is a single alphabetic character. If the user input validation fails, the program exits with an error message. If the user input validation passes, the program exits with a message stating that the user input was valid.
+- The user is then asked to enter a letter. The user input is validated to check if it is a single alphabetic letter. If the user input validation fails, the program exits with an error message. If the user input validation passes, the program exits with a message stating that the user input was valid.
 
 ```python
 import random
@@ -37,7 +37,7 @@ else:
 ## Milestone 3
 Two functions, ask_for_input and check_guess are implemented.
 
-Through a while loop, the ask_for_input function continuously runs, waiting for a valid input character guess from the user. A valid input character is defined as a single alphabetical character. After a valid character is input, the function calls the check_guess function.
+Through a while loop, the ask_for_input function continuously runs, waiting for a valid input letter guess from the user. A valid input letter is defined as a single alphabetical letter. After a valid letter is input, the function calls the check_guess function.
 
 The check_guess function checks if the guess is in the chosen word and prints a message telling the user if the guess was correct or not.
 
@@ -72,3 +72,129 @@ def ask_for_input():
 ask_for_input()
 
 ```
+
+## Milestone 4
+
+The Hangman class is defined. The class is constructed with the following parameters:
+
+- __word_list__:list
+
+    A list of hangman words to randomly select from
+
+- __num_lives__:int
+  
+    The number of lives the player has at the start of the game. Defaults to 5.
+
+
+ The class has the following attributes:
+
+- __word_list__:list
+
+    A list of hangman words to randomly select from. Initialised from the __word_list__ attribute.
+
+- __num_lives__:int
+
+    The number of lives the player has at the start of the game, initialised from the __num_lives__ parameter
+
+- __word__:str
+   
+    A word for the user to play hangman with, randomly selected from the __word_list__ parameter
+
+
+- __word_guessed__:str
+
+    A list of letters representing each sequential letter in the word. Each element is initially set to "_", and subsequently populated with each correct guess. This is used to visually guide the user as to their progress.
+
+- __num_letters__:int
+    
+    The number of unique letters in the word that have not be guessed yet
+
+
+- __list_of_guesses__:list
+
+    The list of guesses that have been tried. Includes both correct and incorrect guesses. 
+
+
+The following class methods are defined and implemented:
+
+- __check_guess__(_guess_)
+
+    Parameter:
+    - _guess_:str. The guessed letter.
+
+     Checks if _guess_ is in the word. 
+     
+     If the guess is in the word, updates __word_guessed__, replaces each relevant "_" character with the guessed letter and reduces __num_letters__ by one.
+
+     If the guess is not the word, reduces the __num_lives__ by one.
+
+     Prints out relevant messages to the user
+
+
+- __ask_for_input()__
+
+    Through a while loop, the user inputs a letter guess. If the letter is not a single alphabetical letter or has already been used as a guess, prints out a message asking the user to input a valid letter and repeats until a valid letter is input.
+
+    If the input is a valid letter, calls __check_guess__ with the input as the argument, adds the letter to __list_of_guesses__ and breaks out of the while loop
+
+    
+```python
+import random
+
+class Hangman:
+    def __init__(self, word_list, num_lives = 5):
+        self.word_list = word_list
+        self.num_lives = num_lives
+
+        self.word = random.choice(word_list)
+        self.word_guessed = ["_" for _ in range(len(self.word))]
+        self.num_letters = len(set(self.word))
+        self.list_of_guesses = []
+
+    def check_guess(self, guess):
+        guess = guess.lower()
+
+        if guess in self.word.lower():
+            print(f"Good guess! {guess} is in the word.")
+            for index, letter in enumerate(self.word.lower()):
+                if letter == guess:
+                    self.word_guessed[index] = letter
+
+            self.num_letters -= 1
+
+        else:
+            self.num_lives -= 1
+            print(f"Sorry, {guess} is not in the word.")
+            print(f"You have {self.num_lives} lives left.")
+
+    def ask_for_input(self):
+        print(self.word)
+
+        while True:
+            print("Guess a letter!")
+            guess = input()
+
+            if not len(guess) == 1 or not guess.isalpha():
+                print("Invalid Letter. Please, enter a single alphabetical character.")
+
+            elif guess in self.list_of_guesses:
+                print("You already tried that letter!")
+
+            else:
+                self.check_guess(guess)
+
+                self.list_of_guesses.append(guess)
+                print(f"{self.num_letters} {self.word_guessed}")
+
+                break
+
+
+word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
+
+hangman = Hangman(word_list)
+
+hangman.ask_for_input()
+
+```
+
+
