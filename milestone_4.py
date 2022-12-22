@@ -47,4 +47,4 @@ print(hangman.word)
 print(hangman.word_guessed)
 print(hangman.num_letters)
 
-hangman.ask_for_input()
+#hangman.ask_for_input()
