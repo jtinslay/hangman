@@ -27,7 +27,7 @@ class Hangman:
             print(f"You have {self.num_lives} lives left.")
 
     def ask_for_input(self):
-        print(self.word)
+  #      print(self.word)
 
         while True:
             print("Guess a letter!")
@@ -43,7 +43,7 @@ class Hangman:
                 self.check_guess(guess)
 
                 self.list_of_guesses.append(guess)
-                print(f"{self.num_letters} {self.word_guessed}")
+                print(f"{self.word_guessed}")
 
                 break
 
