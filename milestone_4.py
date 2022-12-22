@@ -18,7 +18,7 @@ class Hangman:
 
     def ask_for_input(self):
         print(self.word)
-        
+
         while True:
             print("Guess a letter!")
             guess = input()
@@ -33,6 +33,7 @@ class Hangman:
                 self.check_guess(guess)
 
                 self.list_of_guesses.append(guess)
+                break
 
 
 word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
