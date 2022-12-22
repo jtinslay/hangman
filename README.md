@@ -245,13 +245,17 @@ play_game(word_list)
  Gameplay examples with the number of lives set to 6:
 
  1. Invalid input 
+
 ![Milestone 5 command line output](milestone_5_invalid_input.png)
 
 2. No valid guesses
+
 ![Milestone 5 command line output](milestone_5_no_valid_guesses.png)
 
 3. Mix of valid and invalid guesses
+
 ![Milestone 5 command line output](milestone_5_valid_and_invalid_guesses.png)
 
 4. All valid guesses
+
 ![Milestone 5 command line output](milestone_5_all_valid_guesses.png)
