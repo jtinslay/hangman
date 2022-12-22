@@ -66,7 +66,6 @@ def play_game(word_list):
             break
 
 
-#word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
-word_list = ["Strawberries"]
+word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
 
 play_game(word_list)
