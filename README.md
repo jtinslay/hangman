@@ -198,3 +198,60 @@ hangman.ask_for_input()
 ```
 
 
+## Milestone 5
+
+Defines the function:
+
+- __play_game__(_word_list_)
+
+    parameter:
+    _word_list_:list 
+
+    Creates an instance of the hangman class as the game object with __word_list__ and a number of lives argument of 6.
+
+    In a while loop, checks if the game object __num_lives__ attribute is zero. If it is, exits the game with a "You lost! statement.
+
+    If the game __num_letters__ is greater than zero, calls the game __ask_for_input__ method.
+
+    If the game __num__lives__ is not zero and all the letters have been found, such that __num_letters__ is not positive, exits with a "Congratulations. You won the game!" message.
+
+Runs the game by defining a word list and calling the play_game function with the word list as an argument.
+
+```python
+def play_game(word_list):
+    num_lives = 6
+
+    game = Hangman(word_list, num_lives)
+
+    while True:
+
+        if game.num_lives == 0:
+            print("You lost!")
+            break
+
+        elif game.num_letters > 0:
+            game.ask_for_input()
+        
+        if not game.num_lives == 0 and not game.num_letters > 0:
+            print("Congratulations. You won the game!")
+            break
+
+
+word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
+
+play_game(word_list)
+ ```
+
+ Gameplay examples with the number of lives set to 6:
+
+ 1. Invalid input 
+![Milestone 5 command line output](milestone_5_invalid_input.png)
+
+2. No valid guesses
+![Milestone 5 command line output](milestone_5_no_valid_guesses.png)
+
+3. Mix of valid and invalid guesses
+![Milestone 5 command line output](milestone_5_valid_and_invalid_guesses.png)
+
+4. All valid guesses
+![Milestone 5 command line output](milestone_5_all_valid_guesses.png)
