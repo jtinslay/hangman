@@ -40,7 +40,7 @@ class Hangman:
                 self.list_of_guesses.append(guess)
                 print(f"{self.num_letters} {self.word_guessed}")
 
- #               break
+                break
 
 
 word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
