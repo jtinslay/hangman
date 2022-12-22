@@ -15,6 +15,11 @@ class Hangman:
 
         if guess in self.word.lower():
             print(f"Good guess! {guess} is in the word.")
+            for index, letter in enumerate(self.word.lower()):
+                if letter == guess:
+                    self.word_guessed[index] = letter
+
+            self.num_letters -= 1
 
     def ask_for_input(self):
         print(self.word)
@@ -33,7 +38,9 @@ class Hangman:
                 self.check_guess(guess)
 
                 self.list_of_guesses.append(guess)
-                break
+                print(f"{self.num_letters} {self.word_guessed}")
+
+ #               break
 
 
 word_list = ["Apples", "Oranges", "Strawberries", "Blueberries", "Kiwis"]
